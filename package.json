@@ -1,0 +1,20 @@
+{
+  "name": "flow-sudoku",
+  "version": "0.0.1",
+  "description": "An inefficient sudoku solver written to try out Flow.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "flow",
+    "sudoku"
+  ],
+  "author": "Justin McCandless",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.67.1"
+  }
+}
