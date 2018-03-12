@@ -197,6 +197,7 @@ export const exampleBoard = {
   '88': { value: null, fixed: false },
 };
 
+// TODO
 export function solve(board: Board) :Board {
   board['01'] = { value: 1, fixed: true };
 

@@ -34,8 +34,10 @@ export default class Solver extends React.Component<Props, State> {
   }
 
   onClickSolve = () => {
+    const solvedBoard = solve(this.state.board);
+
     this.setState({
-      board: solve(this.state.board),
+      board: solvedBoard,
     });
   }
 
@@ -48,6 +50,7 @@ export default class Solver extends React.Component<Props, State> {
         />
         <button
           onClick={this.onClickSolve}
+          disabled
         >
           Solve
         </button>
