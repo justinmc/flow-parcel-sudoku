@@ -113,8 +113,7 @@ export function getBoard() :Board {
   return board;
 }
 
-/*
-const puzzle = {
+export const exampleBoard = {
   '00': { value: null, fixed: false },
   '01': { value: null, fixed: false },
   '02': { value: 4, fixed: true },
@@ -198,9 +197,74 @@ const puzzle = {
   '88': { value: null, fixed: false },
 };
 
-function solve (board: Board) :Board {
+export function solve(board: Board) :Board {
   board['01'] = { value: 1, fixed: true };
 
   return board;
 }
-*/
+
+/**
+ * Validate an entire board
+ */
+export function validateBoard(board: Board) :boolean {
+  // Check rows
+  for (let y = 0; y < 9; y++) {
+    const row = [];
+    for (let x = 0; x < 9; x++) {
+      row.push(board[`${x}${y}`]);
+    }
+    if (!validateLine(row)) {
+      return false;
+    }
+  }
+
+  // Check columns
+  for (let x = 0; x < 9; x++) {
+    const column = [];
+    for (let y = 0; y < 9; y++) {
+      column.push(board[`${x}${y}`]);
+    }
+    if (!validateLine(column)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
+ * Validate a line of squares (column or row)
+ */
+export function validateLine(squares: Array<Square>) :boolean {
+  const foundNumbers = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+  };
+
+  return !squares.some((square: Square) => {
+    // Value can be null
+    if (square.value === null) {
+      return false;
+    }
+
+    // Make sure the value is a valid value in itself
+    if (typeof square.value !== 'number' || square.value < 1 || square.value > 9) {
+      return true;
+    }
+
+    // If any square duplicate, then the line is invalid
+    if (foundNumbers[square.value]) {
+      return true;
+    }
+
+    foundNumbers[square.value] = true;
+    return false;
+  });
+}
