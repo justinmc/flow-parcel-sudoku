@@ -1,5 +1,7 @@
+type SquareValue = null | 1 | 2 | 3 | 4  | 5 | 6 | 7 | 8 | 9;
+
 type Square = {
-  value: null | 1 | 2 | 3 | 4  | 5 | 6 | 7 | 8 | 9,
+  value: SquareValue,
   fixed: boolean,
 }
 

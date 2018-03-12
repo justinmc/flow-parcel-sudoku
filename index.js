@@ -1,12 +1,9 @@
 /* @flow */
 import React from 'react';
 import { render } from 'react-dom';
-import BoardComponent from './components/board';
-import { getBoard } from './utils/board';
+import Solver from './components/Solver';
 
 render(
-  <BoardComponent
-    board={getBoard()}
-  />,
+  <Solver />,
   document.querySelector('.app'),
 );

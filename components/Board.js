@@ -4,6 +4,7 @@ import '../styles/board.css';
 
 type Props = {
   board: Board,
+  onChangeSquare: Function,
 };
 
 export default function Board(props: Props) {
@@ -21,10 +22,15 @@ export default function Board(props: Props) {
     <div className="board">
       {
         rows.map((row: Array<Square>, rowIndex: number) => (
-          <div className="row">
+          <div className="row" key={rowIndex}>
             {
               row.map((square: Square, columnIndex: number) =>
-                <Square key={`${columnIndex}${rowIndex}`} square={square} />
+                <Square
+                  id={`${columnIndex}${rowIndex}`}
+                  key={`${columnIndex}${rowIndex}`}
+                  square={square}
+                  onChange={props.onChangeSquare}
+                />
               )
             }
         </div>
