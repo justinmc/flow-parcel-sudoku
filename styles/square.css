@@ -1,0 +1,9 @@
+.square {
+  flex: 1;
+  padding: 4px;
+}
+
+.square input {
+  width: 100%;
+  height: 100%;
+}
